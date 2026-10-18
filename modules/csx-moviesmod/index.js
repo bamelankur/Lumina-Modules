@@ -10,6 +10,7 @@ const BASE_URL = DEFAULT_BASE;
 const USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";
 
 function absolute(url, base = BASE_URL) {
+  if (!String(url || "").trim()) return "";
   try { return new URL(url, base).href; } catch (_) { return ""; }
 }
 
@@ -89,17 +90,17 @@ function parseCards(html) {
   return results;
 }
 
-function extractAnchors(html, classPattern) {
+function extractAnchors(html, classPattern, base = BASE_URL) {
   const anchors = html.match(/<a\b[^>]*>[\s\S]*?<\/a>/gi) || [];
   return anchors.filter(tag => classPattern.test(attr(tag, "class"))).map(tag => ({
     title: stripTags(tag),
-    href: absolute(decodeWrappedUrl(attr(tag, "href")))
+    href: absolute(decodeWrappedUrl(attr(tag, "href")), base)
   })).filter(item => item.href);
 }
 
 async function findFinalUrl(pageUrl) {
   const html = await getText(pageUrl);
-  const candidates = extractAnchors(html, /maxbutton-1|maxbutton-5|download|play|watch/i);
+  const candidates = extractAnchors(html, /maxbutton-1|maxbutton-5|download|play|watch/i, pageUrl);
   const video = html.match(/https?:\\?\/\\?\/[^\s"'<>]+\.(?:mp4|m3u8|mpd)(?:\?[^\s"'<>]*)?/i);
   if (video) return { url: video[0].replace(/\\\//g, "/"), headers: { "User-Agent": USER_AGENT, "Referer": pageUrl } };
   const direct = candidates.find(item => /\.(mp4|m3u8|mpd)(\?|$)/i.test(item.href));
