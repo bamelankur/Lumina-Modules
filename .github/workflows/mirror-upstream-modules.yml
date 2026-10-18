@@ -2,6 +2,10 @@ name: Mirror compatible upstream module ZIPs
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/mirror-upstream-modules.yml"
 
 permissions:
   contents: write
