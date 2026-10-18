@@ -3,9 +3,9 @@
   "name": "CineStream",
   "moduleSystem": "lumina",
   "contractVersion": 1,
-  "moduleVersion": "1.0.0",
+  "moduleVersion": "1.0.1",
   "contentType": "video",
-  "description": "Lumina-native Stremio/Cinemeta metadata catalogue adapter. Browsing is supported; CloudStream-only extractors are not available for playback.",
+  "description": "Lumina-native Stremio/Cinemeta metadata catalogue adapter. Movie details now expose a fallback movie item when metadata has no video list; provider-specific playback extraction is not included.",
   "config": {
     "runtime": {
       "entry": "index.js"
