@@ -1,0 +1,93 @@
+name: Package Lumina modules
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "modules/**"
+      - ".github/workflows/package-modules.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build module ZIPs and repository index
+        shell: bash
+        run: |
+          python3 <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          from zipfile import ZIP_DEFLATED, ZipFile
+
+          root = Path(".")
+          modules_root = root / "modules"
+          packages_root = root / "packages"
+          packages_root.mkdir(exist_ok=True)
+          entries = []
+
+          for folder in sorted(p for p in modules_root.iterdir() if p.is_dir()):
+              manifest_path = folder / "module.json"
+              entry_path = folder / "index.js"
+              if not manifest_path.is_file() or not entry_path.is_file():
+                  print(f"Skipping {folder.name}: module.json or index.js missing")
+                  continue
+
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              module_id = manifest.get("id")
+              version = str(manifest.get("moduleVersion", ""))
+              if not module_id or module_id != folder.name or not version:
+                  raise SystemExit(f"Invalid module identity/version in {manifest_path}")
+
+              package_name = f"{module_id}-{version}.zip"
+              package_path = packages_root / package_name
+              with ZipFile(package_path, "w", ZIP_DEFLATED) as archive:
+                  archive.write(manifest_path, "module.json")
+                  archive.write(entry_path, "index.js")
+
+              digest = hashlib.sha256(package_path.read_bytes()).hexdigest()
+              entries.append({
+                  "moduleId": module_id,
+                  "version": version,
+                  "contentType": manifest.get("contentType", "video"),
+                  "description": manifest.get("description", ""),
+                  "packageUrl": f"https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/{package_name}",
+                  "sha256": digest
+              })
+              print(f"Packaged {module_id}@{version}: sha256={digest}")
+
+          repository = {
+              "schemaVersion": 1,
+              "repositoryId": "lumina-official-modules",
+              "name": "Lumina Modules",
+              "app": "Lumina Player",
+              "modules": entries
+          }
+          (root / "repository.json").write_text(
+              json.dumps(repository, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Commit generated packages and catalogue
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages repository.json
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit."
+          else
+            git commit -m "Build Lumina module packages"
+            git push origin HEAD:main
+          fi
