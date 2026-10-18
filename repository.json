@@ -3,5 +3,14 @@
   "repositoryId": "lumina-official-modules",
   "name": "Lumina Modules",
   "app": "Lumina Player",
-  "modules": []
+  "modules": [
+    {
+      "moduleId": "lumina-demo",
+      "version": "1.0.0",
+      "contentType": "video",
+      "description": "Diagnostic provider for testing Lumina search, episode resolution, and sample playback.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.0.zip",
+      "sha256": "0a2d185bdbe9da89fbc1cd7eb32c68312afb699838aff07b589e5c64d55c1350"
+    }
+  ]
 }
