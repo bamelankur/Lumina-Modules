@@ -1,11 +1,11 @@
 // Lumina Module API v1 — playback diagnostic provider.
-// The public Big Buck Bunny sample is used only to verify the playback pipeline.
+// Uses Flutter's public MP4 sample to verify the native video playback pipeline.
 const sample = {
-  title: "Big Buck Bunny — Lumina Playback Test",
-  href: "lumina-demo-big-buck-bunny",
-  image: "https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217",
-  year: "2008",
-  description: "Public sample video used to test Lumina playback."
+  title: "Lumina Playback Test",
+  href: "lumina-playback-test",
+  image: "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.png",
+  year: "Demo",
+  description: "Public MP4 sample used to test Lumina playback."
 };
 
 globalThis.LuminaModule = {
@@ -14,7 +14,7 @@ globalThis.LuminaModule = {
 
   search(query) {
     const q = String(query || "").trim().toLowerCase();
-    if (!q || sample.title.toLowerCase().includes(q) || "big buck bunny playback test".includes(q)) {
+    if (!q || sample.title.toLowerCase().includes(q) || "lumina playback test".includes(q)) {
       return [sample];
     }
     return [];
@@ -28,16 +28,16 @@ globalThis.LuminaModule = {
   episodes(href) {
     if (href !== sample.href) return [];
     return [{
-      title: "Sample video",
-      href: "lumina-demo-big-buck-bunny-episode-1",
+      title: "Sample MP4 video",
+      href: "lumina-playback-test-episode-1",
       season: "1"
     }];
   },
 
   stream(episodeHref) {
-    if (episodeHref !== "lumina-demo-big-buck-bunny-episode-1") return null;
+    if (episodeHref !== "lumina-playback-test-episode-1") return null;
     return {
-      url: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      url: "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
       headers: {}
     };
   },
