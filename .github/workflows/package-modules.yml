@@ -1,5 +1,10 @@
 name: Package Lumina modules
 
+# Serialize catalogue writers so concurrent workflows cannot overwrite each other.
+concurrency:
+  group: lumina-modules-main-catalogue
+  cancel-in-progress: false
+
 on:
   push:
     branches: [main]
