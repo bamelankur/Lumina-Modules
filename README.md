@@ -34,3 +34,10 @@ This repository is Lumina-branded. Compatibility adapters for third-party module
 ## Demo module
 
 The included `lumina-demo` provider is a diagnostic example that returns the public Big Buck Bunny sample video. It is intended to test the search-to-playback pipeline, not to provide a streaming catalogue.
+
+
+## CSX compatibility
+
+The upstream [CSX repository](https://github.com/SaurabhKaperwan/CSX) contains Kotlin CloudStream plugins, not Lumina JavaScript modules. Its repository URL therefore cannot be installed directly by Lumina. This catalogue now includes **CSX Moviesmod**, a Lumina API v1 JavaScript port of the Moviesmod provider as the first compatibility module. It implements search, details, source/episode discovery, and returns direct media URLs when exposed by a source page.
+
+CloudStream-specific Kotlin extractors and the other CSX providers are not automatically included; they need individual JavaScript ports and testing against Lumina's runtime. The packaging workflow creates a separate ZIP containing exactly one `module.json` and one `index.js` per module, then updates `repository.json` with the ZIP SHA-256.
