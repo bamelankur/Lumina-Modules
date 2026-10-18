@@ -1,0 +1,14 @@
+{
+  "id": "csx-moviesmod",
+  "name": "CSX Moviesmod",
+  "moduleSystem": "lumina",
+  "contractVersion": 1,
+  "moduleVersion": "1.0.0",
+  "contentType": "video",
+  "description": "Lumina-native JavaScript port of the Moviesmod provider from CSX. Supports search, title details, source/episode discovery, and direct playable links when the host exposes them.",
+  "config": {
+    "runtime": {
+      "entry": "index.js"
+    }
+  }
+}
