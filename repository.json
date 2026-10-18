@@ -10,15 +10,15 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for Bollyflix: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-bollyflix-1.0.0.zip",
-      "sha256": "d167a3cfbd609a78681357a6af0fd67ff949ef652f30b1de64c0bc4fdfc7b7b8"
+      "sha256": "8b6a38af942dab76f0cb2b401cf78b68433bb3d282f8de0ca39b4baf94a70e8d"
     },
     {
       "moduleId": "csx-cinestream",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "contentType": "video",
-      "description": "Lumina-native Stremio/Cinemeta metadata adapter. Accepts title or catalogue IDs and supplies a fallback movie item when metadata has no video list; provider-specific playback extraction is not included.",
-      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-cinestream-1.0.2.zip",
-      "sha256": "33cca52cdb2ace1c9f694f3aba947ece6c5fef00233ebaff67c5dabcec6efa24"
+      "description": "Lumina-native Stremio/Cinemeta metadata adapter. Uses Lumina Player's handler contract; provider-specific playback extraction is not included.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-cinestream-1.0.3.zip",
+      "sha256": "dcc7f1c5e27b4f194258ad4977791ccbf93d2eb2f3feca38c265a29f61c73786"
     },
     {
       "moduleId": "csx-moviesdrive",
@@ -26,7 +26,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for MoviesDrive: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesdrive-1.0.0.zip",
-      "sha256": "c9330d462a515ffa8c5318664010ba9a80222052951785a627bf4389800b8ccf"
+      "sha256": "6ce819c4c406ae4cfde9f720ee3f868d04a4168bffaafb7a327eb38efaa30a06"
     },
     {
       "moduleId": "csx-moviesmod",
@@ -34,7 +34,7 @@
       "contentType": "video",
       "description": "Lumina-native JavaScript port of the Moviesmod provider from CSX. Supports search, title details, source/episode discovery, and direct playable links when the host exposes them.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesmod-1.0.1.zip",
-      "sha256": "4c7c20f9b76b71a232765143f89d065159e9b727ca4effe29f3a5ac846cef312"
+      "sha256": "1d82e23f576e9efaedfa7f0dbda936077b555df662e4eedfe5ea18a782fb9ea5"
     },
     {
       "moduleId": "csx-vegamovies",
@@ -42,279 +42,15 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for VegaMovies: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-vegamovies-1.0.0.zip",
-      "sha256": "0b00a7ea042e50d64fb5e40df72138f11e7cbf9e6f04aff51823021f00c3bf4e"
+      "sha256": "0f26dfaeae35dd728aa311222ec71250c3ebf60c5c32af8356ea51947f85f174"
     },
     {
       "moduleId": "lumina-demo",
-      "version": "1.0.1",
-      "contentType": "video",
-      "description": "Diagnostic provider for testing Lumina search, episode resolution, and native MP4 playback.",
-      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.1.zip",
-      "sha256": "c805e1d545b990103315f03532ff38a1f12bef7c60f2d015a164b80e97ea8111"
-    },
-    {
-      "moduleId": "anipm-v1",
-      "version": "0.1.0-beta.4",
-      "contentType": "video",
-      "description": "English Anime (AniPM)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/anipm-v1-0.1.0-beta.4.zip",
-      "sha256": "501ffce64440f18354246610d60883dc3d4c48a819cbc23a9186c0de2a28d126"
-    },
-    {
-      "moduleId": "anikoto-v4",
-      "version": "5.0.5-beta.2",
-      "contentType": "video",
-      "description": "Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/anikoto-v4-5.0.5-beta.2.zip",
-      "sha256": "15e0637a91e856bf791a85ff04d26734d881e6164bf5ebe4d2273a9d6b73ad23"
-    },
-    {
-      "moduleId": "anikage-v1",
-      "version": "1.1.2",
-      "contentType": "video",
-      "description": "English Anime (SUB / DUB)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/anikage-v1-1.1.2.zip",
-      "sha256": "7a920b0bfe275a090b90c90cba68100b588072056a794579352052c374c44e5a"
-    },
-    {
-      "moduleId": "yflix-v1",
-      "version": "1.1.2",
-      "contentType": "video",
-      "description": "Movies & TV Shows (HD Streams)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/yflix-v1-1.1.2.zip",
-      "sha256": "6e772e78b4124f9443f89577fab90b524bf0d63ebf7af089441bed81ea05ca6f"
-    },
-    {
-      "moduleId": "dramacool-v1",
       "version": "1.0.2",
       "contentType": "video",
-      "description": "Asian Drama (Korean / Chinese / Japanese)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/dramacool-v1-1.0.2.zip",
-      "sha256": "311718668b9c95837ec60cb3df0f6bb716c7bed030afccbca20476f9fa29a43a"
-    },
-    {
-      "moduleId": "drama-direct-v1",
-      "version": "0.1.0-beta.9",
-      "contentType": "video",
-      "description": "Drama Direct (Experimental)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/drama-direct-v1-0.1.0-beta.9.zip",
-      "sha256": "0374dcafd676e190fdcda6a05016510c8f3873e1b421bc049bc9eb8814e5b1ac"
-    },
-    {
-      "moduleId": "onepace-v3",
-      "version": "3.0.6",
-      "contentType": "video",
-      "description": "One Piece",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/onepace-v3-3.0.6.zip",
-      "sha256": "9e2199589ede6aa5aeb6ebfa6cfd29543ddb04e224695d331327b86a50f08b25"
-    },
-    {
-      "moduleId": "animeheaven-v2-1",
-      "version": "4.1.0",
-      "contentType": "video",
-      "description": "Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/animeheaven-v2-1-4.1.0.zip",
-      "sha256": "7a818d060c496a610afd92f7b57421c7285c9915b0c3683b2762e3a6def710cd"
-    },
-    {
-      "moduleId": "xstream-v1",
-      "version": "1.3.3",
-      "contentType": "video",
-      "description": "Movies & TV",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/xstream-v1-1.3.3.zip",
-      "sha256": "63534f4b3a4a5e2bd15c4e1ddefd96fc20cc2009ea1eb851bc46c34d3c0a7148"
-    },
-    {
-      "moduleId": "miruro-v3",
-      "version": "4.1.2",
-      "contentType": "video",
-      "description": "Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/miruro-v3-4.1.2.zip",
-      "sha256": "22b028e7967f3b8a1ca89faf649fb33fbe7dcc6659ca311b41e44e0847225812"
-    },
-    {
-      "moduleId": "anime-sama-v1",
-      "version": "1.1.2",
-      "contentType": "video",
-      "description": "French Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/anime-sama-v1-1.1.2.zip",
-      "sha256": "c6f6c913e0fd015dddbb7291c695c4942fe1bb05fe90ff699b502e2ee10b675e"
-    },
-    {
-      "moduleId": "an1me-v1",
-      "version": "1.1.1",
-      "contentType": "video",
-      "description": "Greek Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/an1me-v1-1.1.1.zip",
-      "sha256": "456c6110f16b3e6c3224131f024150d6a5f5444a97481e7fc1be782ba32c06ad"
-    },
-    {
-      "moduleId": "animeav1-v1",
-      "version": "1.3.0-beta.4",
-      "contentType": "video",
-      "description": "Spanish Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/animeav1-v1-1.3.0-beta.4.zip",
-      "sha256": "3b039a10a2952569bb879d6a18ca9f979ccdc53cbfecfe72dd3a2241b0fc6175"
-    },
-    {
-      "moduleId": "kartoons-v1",
-      "version": "1.1.6",
-      "contentType": "video",
-      "description": "Childhood Cartoons & Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/kartoons-v1-1.1.6.zip",
-      "sha256": "51cf4eb68cc674c6d4fc334329c18b22a5074004607fb0f2a125f951e56463e3"
-    },
-    {
-      "moduleId": "dramafun-v3",
-      "version": "4.0.1",
-      "contentType": "video",
-      "description": "Spanish Drama",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/dramafun-v3-4.0.1.zip",
-      "sha256": "b66d9cfb3f3f5dc53d273c64cf23ba006c8ee9d8ad40342ea6427fba6d825fa9"
-    },
-    {
-      "moduleId": "toontales-v1",
-      "version": "3.0.1",
-      "contentType": "video",
-      "description": "Cartoons",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/toontales-v1-3.0.1.zip",
-      "sha256": "2d9ef1b1c6795c2e4b0bb78c73a863adc6cee21ffca1b373b1d40925f95f86a0"
-    },
-    {
-      "moduleId": "aniworld-v1",
-      "version": "1.3.2",
-      "contentType": "video",
-      "description": "German Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/aniworld-v1-1.3.2.zip",
-      "sha256": "0a56360b7e14e121d48fca5ec749f540751fd56c85852557efc279bc50ffd3ff"
-    },
-    {
-      "moduleId": "megakino-v1",
-      "version": "1.1.5",
-      "contentType": "video",
-      "description": "German Movies & Series",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/megakino-v1-1.1.5.zip",
-      "sha256": "6dd028c503a9b95e94293308cb907be6467092a523cd7480696fb54bb1647f24"
-    },
-    {
-      "moduleId": "weebcentral-v2",
-      "version": "4.1.13",
-      "contentType": "image",
-      "description": "Manga",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/weebcentral-v2-4.1.13.zip",
-      "sha256": "56bb2b59871b13964d3b39458fd51d5133a494fa1a9910b7ef81e0bc8e010840"
-    },
-    {
-      "moduleId": "atsu-v3",
-      "version": "4.0.5",
-      "contentType": "image",
-      "description": "Manga",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/atsu-v3-4.0.5.zip",
-      "sha256": "3d6dbdb940a1c8c4b78b35cdcd72bcb997bdad30f47e0565726c64dc29e8b840"
-    },
-    {
-      "moduleId": "animeunity-v1",
-      "version": "1.0.7",
-      "contentType": "video",
-      "description": "Italian Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/animeunity-v1-1.0.7.zip",
-      "sha256": "e3e7f178f3183dfd74bd5e03fcc24d8c64276bf9900d81ceb94813cf67de63d7"
-    },
-    {
-      "moduleId": "kickassanime-v3",
-      "version": "4.2.0",
-      "contentType": "video",
-      "description": "English Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/kickassanime-v3-4.2.0.zip",
-      "sha256": "4f31c3cd519a37ecf552e838f6d4e3b41fa72e8ab91f5489ff8c326b4bc8748f"
-    },
-    {
-      "moduleId": "shahiid-v1",
-      "version": "2.1.2",
-      "contentType": "video",
-      "description": "Arabic Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/shahiid-v1-2.1.2.zip",
-      "sha256": "242d17684dd2576d6407fa5e09304a0c53f8607f64b82a92996dc998f0971688"
-    },
-    {
-      "moduleId": "mugiwara-v1",
-      "version": "1.1.0-beta.5",
-      "contentType": "video",
-      "description": "French Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/mugiwara-v1-1.1.0-beta.5.zip",
-      "sha256": "be79e89310c221091d52c7cc7aaf15ba5aeda2a7b87a74fe9ea66d45901be857"
-    },
-    {
-      "moduleId": "justanime-v1",
-      "version": "1.0.1",
-      "contentType": "video",
-      "description": "English Anime (SUB / DUB)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/justanime-v1-1.0.1.zip",
-      "sha256": "4b47437fd7fa51f1a2f329ed2e6d6396c09cddd855ef0cd083b74b9ab30f890c"
-    },
-    {
-      "moduleId": "streamingunity-v1",
-      "version": "1.0.4",
-      "contentType": "video",
-      "description": "StreamingUnity Movies & TV",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/streamingunity-v1-1.0.4.zip",
-      "sha256": "5061ab59efe1166dfaeabe51082c2838020abfb78dd1a5900bc5ea32261e654c"
-    },
-    {
-      "moduleId": "mangakatana-v1",
-      "version": "1.0.2",
-      "contentType": "image",
-      "description": "Manga",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/mangakatana-v1-1.0.2.zip",
-      "sha256": "66afbc8fea12e05663b38413d1e9ce1250ef4119f682938f1cbd10824197df30"
-    },
-    {
-      "moduleId": "mgread-v1",
-      "version": "1.0.1",
-      "contentType": "image",
-      "description": "Manga",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/mgread-v1-1.0.1.zip",
-      "sha256": "5045164c8fbe922533899715de5145eb9857256d02c1afd24278d95c9b179a5e"
-    },
-    {
-      "moduleId": "colorizedmanga-v1",
-      "version": "1.0.0-beta.1",
-      "contentType": "image",
-      "description": "Colorized Manga",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/colorizedmanga-v1-1.0.0-beta.1.zip",
-      "sha256": "fa26df19a047a5253cdaee76cd6aeba701a4e2cebbc601776654b7b379a0029c"
-    },
-    {
-      "moduleId": "alpha-movies",
-      "version": "0.2.0-beta.3",
-      "contentType": "video",
-      "description": "Multi-source movies & TV (Beta)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/alpha-movies-0.2.0-beta.3.zip",
-      "sha256": "169a207b996f135ec2b5d2aa8d81ca5d32904454e75dc74b2c42cb7356580e7c"
-    },
-    {
-      "moduleId": "moviedb-wiki-v1",
-      "version": "0.1.0-beta.14",
-      "contentType": "video",
-      "description": "Fast one-call movie & TV streams (Beta)",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/moviedb-wiki-v1-0.1.0-beta.14.zip",
-      "sha256": "e1187d6bc571dcb24c1c8340378bf1f191f8cdd7bef8b8d553258e818ba9f3d6"
-    },
-    {
-      "moduleId": "cimacub-v1",
-      "version": "1.2.0",
-      "contentType": "video",
-      "description": "Arabic subtitled movies, series and anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/cimacub-v1-1.2.0.zip",
-      "sha256": "3ddee1d22400b00963d5085b92efd648f36e64128c8af0a9dffbea55b995de86"
-    },
-    {
-      "moduleId": "anime4up-site-v1",
-      "version": "1.0.0-beta.10",
-      "contentType": "video",
-      "description": "Arabic Anime",
-      "packageUrl": "https://github.com/bamelankur/Lumina-Modules/releases/download/upstream-mirror-20261018230207/anime4up-site-v1-1.0.0-beta.10.zip",
-      "sha256": "3a28b4175a7030105490930820720fde63f9a49fffe1013cbc51d33c74668a2c"
+      "description": "Diagnostic provider for testing Lumina Player's search, episode resolution, and native MP4 playback handler contract.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.2.zip",
+      "sha256": "0be47ad75cc8906a623c2af2bf28b3dcdaab8dfcac6d2d24acab8816a316433a"
     }
   ]
 }
