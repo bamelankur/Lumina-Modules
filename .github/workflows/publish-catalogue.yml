@@ -1,0 +1,92 @@
+name: Publish Lumina module catalogue
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "modules/**"
+      - ".github/workflows/publish-catalogue.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-catalogue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Package modules and build catalogue
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib, zipfile
+
+          root = pathlib.Path(".")
+          packages = root / "packages"
+          packages.mkdir(exist_ok=True)
+          modules = []
+
+          for folder in sorted((root / "modules").iterdir()):
+              if not folder.is_dir():
+                  continue
+              manifest_path = folder / "module.json"
+              entry_path = folder / "index.js"
+              if not manifest_path.is_file() or not entry_path.is_file():
+                  print(f"Skipping {folder}: module.json or index.js missing")
+                  continue
+
+              manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+              module_id = str(manifest.get("id", ""))
+              version = str(manifest.get("moduleVersion", manifest.get("version", "1.0.0")))
+              if module_id != folder.name:
+                  raise SystemExit(f"{folder}: manifest id must match folder name")
+              if manifest.get("moduleSystem") != "lumina" or int(manifest.get("contractVersion", 0)) < 1:
+                  raise SystemExit(f"{folder}: expected Lumina Module API v1")
+              if manifest.get("contentType") not in {"video", "music", "image", "text"}:
+                  raise SystemExit(f"{folder}: unsupported contentType")
+
+              package_name = f"{module_id}-{version}.zip"
+              package_path = packages / package_name
+              with zipfile.ZipFile(package_path, "w", zipfile.ZIP_DEFLATED) as zf:
+                  zf.write(manifest_path, "module.json")
+                  zf.write(entry_path, "index.js")
+
+              digest = hashlib.sha256(package_path.read_bytes()).hexdigest()
+              modules.append({
+                  "moduleId": module_id,
+                  "version": version,
+                  "contentType": manifest["contentType"],
+                  "description": manifest.get("description", ""),
+                  "packageUrl": f"https://raw.githubusercontent.com/{os.environ['GITHUB_REPOSITORY']}/main/packages/{package_name}",
+                  "sha256": digest
+              })
+
+          catalogue = {
+              "schemaVersion": 1,
+              "repositoryId": "lumina-official-modules",
+              "name": "Lumina Modules",
+              "app": "Lumina Player",
+              "modules": modules
+          }
+          (root / "repository.json").write_text(
+              json.dumps(catalogue, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8"
+          )
+          print(f"Published catalogue metadata for {len(modules)} module(s).")
+          PY
+
+      - name: Commit generated packages and catalogue
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages repository.json
+          if git diff --cached --quiet; then
+            echo "No generated package or catalogue changes."
+            exit 0
+          fi
+          git commit -m "Publish Lumina module packages and catalogue"
+          git push
