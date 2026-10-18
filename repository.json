@@ -5,12 +5,20 @@
   "app": "Lumina Player",
   "modules": [
     {
+      "moduleId": "csx-moviesmod",
+      "version": "1.0.0",
+      "contentType": "video",
+      "description": "Lumina-native JavaScript port of the Moviesmod provider from CSX. Supports search, title details, source/episode discovery, and direct playable links when the host exposes them.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesmod-1.0.0.zip",
+      "sha256": "72af93bd2f9ab5e9af4ac433d372cd7140e0e62b3f33bb31aa2cafe7219fb3fc"
+    },
+    {
       "moduleId": "lumina-demo",
       "version": "1.0.1",
       "contentType": "video",
       "description": "Diagnostic provider for testing Lumina search, episode resolution, and native MP4 playback.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.1.zip",
-      "sha256": "b758fb57409bdb80e5395c8156a4732d00943cd28648db6cc58e9a58e34d76f9"
+      "sha256": "43344234e65ca3d87a42d9b88404224f2ebe8d57d8f45d7ded1404da4998458f"
     }
   ]
 }
