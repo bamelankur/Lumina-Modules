@@ -1,0 +1,14 @@
+{
+  "id": "csx-moviesdrive",
+  "name": "MoviesDrive",
+  "moduleSystem": "lumina",
+  "contractVersion": 1,
+  "moduleVersion": "1.0.0",
+  "contentType": "video",
+  "description": "Lumina-native provider adapter for MoviesDrive: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
+  "config": {
+    "runtime": {
+      "entry": "index.js"
+    }
+  }
+}

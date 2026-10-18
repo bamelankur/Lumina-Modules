@@ -1,0 +1,14 @@
+{
+  "id": "csx-cinestream",
+  "name": "CineStream",
+  "moduleSystem": "lumina",
+  "contractVersion": 1,
+  "moduleVersion": "1.0.0",
+  "contentType": "video",
+  "description": "Lumina-native Stremio/Cinemeta metadata catalogue adapter. Browsing is supported; CloudStream-only extractors are not available for playback.",
+  "config": {
+    "runtime": {
+      "entry": "index.js"
+    }
+  }
+}
