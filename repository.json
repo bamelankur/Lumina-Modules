@@ -6,11 +6,11 @@
   "modules": [
     {
       "moduleId": "lumina-demo",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "contentType": "video",
-      "description": "Diagnostic provider for testing Lumina search, episode resolution, and sample playback.",
-      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.0.zip",
-      "sha256": "0a2d185bdbe9da89fbc1cd7eb32c68312afb699838aff07b589e5c64d55c1350"
+      "description": "Diagnostic provider for testing Lumina search, episode resolution, and native MP4 playback.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.1.zip",
+      "sha256": "b758fb57409bdb80e5395c8156a4732d00943cd28648db6cc58e9a58e34d76f9"
     }
   ]
 }
