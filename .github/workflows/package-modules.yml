@@ -21,6 +21,14 @@ jobs:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Validate JavaScript entry points
+        shell: bash
+        run: |
+          for file in modules/*/index.js; do
+            [ -f "$file" ] || continue
+            node --check "$file"
+          done
+
       - name: Build module ZIPs and repository index
         shell: bash
         run: |
