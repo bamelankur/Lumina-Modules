@@ -75,6 +75,22 @@ jobs:
               })
               print(f"Packaged {module_id}@{version}: sha256={digest}")
 
+          # Preserve externally mirrored packages when rebuilding native modules.
+          # IDs whose folders exist under modules/ are managed by this workflow.
+          managed_ids = {p.name for p in modules_root.iterdir() if p.is_dir()}
+          existing_path = root / "repository.json"
+          if existing_path.is_file():
+              try:
+                  existing = json.loads(existing_path.read_text(encoding="utf-8"))
+                  for item in existing.get("modules", []):
+                      module_id = item.get("moduleId", "")
+                      if module_id and module_id not in managed_ids and not any(
+                          entry["moduleId"] == module_id for entry in entries
+                      ):
+                          entries.append(item)
+              except (ValueError, AttributeError):
+                  print("Existing catalogue could not be parsed; rebuilding native entries only.")
+
           repository = {
               "schemaVersion": 1,
               "repositoryId": "lumina-official-modules",
