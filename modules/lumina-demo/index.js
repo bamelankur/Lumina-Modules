@@ -30,7 +30,8 @@ globalThis.LuminaModule = {
     return [{
       title: "Sample MP4 video",
       href: "lumina-playback-test-episode-1",
-      season: "1"
+      season: "1",
+      episode: 1
     }];
   },
 
@@ -46,3 +47,29 @@ globalThis.LuminaModule = {
     return [sample];
   }
 };
+
+ 
+// Lumina Player compatibility bridge.
+// Lumina Player calls these handler names directly on globalThis.
+(function installLuminaPlayerHandlers() {
+  const api = globalThis.LuminaModule;
+  if (!api || typeof api !== "object") return;
+  globalThis.searchResults = function (query) {
+    return typeof api.search === "function" ? api.search(query) : [];
+  };
+  globalThis.extractDetails = function (href) {
+    return typeof api.details === "function" ? api.details(href) : null;
+  };
+  globalThis.extractEpisodes = function (href) {
+    return typeof api.episodes === "function" ? api.episodes(href) : [];
+  };
+  globalThis.extractStreamUrl = function (episodeHref, audio, preferDub) {
+    return typeof api.stream === "function" ? api.stream(episodeHref, audio, preferDub) : null;
+  };
+  globalThis.extractHome = function () {
+    return typeof api.home === "function" ? api.home() : [];
+  };
+  globalThis.discoveryHome = function () {
+    return typeof api.home === "function" ? api.home() : [];
+  };
+})();

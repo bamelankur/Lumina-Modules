@@ -3,9 +3,9 @@
   "name": "Lumina Playback Test",
   "moduleSystem": "lumina",
   "contractVersion": 1,
-  "moduleVersion": "1.0.1",
+  "moduleVersion": "1.0.2",
   "contentType": "video",
-  "description": "Diagnostic provider for testing Lumina search, episode resolution, and native MP4 playback.",
+  "description": "Diagnostic provider for testing Lumina Player's search, episode resolution, and native MP4 playback handler contract.",
   "config": {
     "runtime": {
       "entry": "index.js"
