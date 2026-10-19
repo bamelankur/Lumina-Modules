@@ -1,0 +1,10 @@
+{
+  "id": "lumina-demo-scaffold",
+  "name": "Lumina Demo Scaffold",
+  "moduleSystem": "lumina",
+  "contractVersion": 1,
+  "moduleVersion": "1.0.0",
+  "contentType": "video",
+  "languages": ["hindi", "english"],
+  "config": { "runtime": { "entry": "index.js" } }
+}
