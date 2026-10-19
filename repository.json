@@ -6,11 +6,11 @@
   "modules": [
     {
       "moduleId": "anikoto-anime",
-      "version": "0.1.2-draft",
+      "version": "0.1.3-draft",
       "contentType": "video",
-      "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Search, details, sub/dub episode discovery, and best-effort stream resolution; playback remains unverified.",
-      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/anikoto-anime-0.1.2-draft.zip",
-      "sha256": "de25d4e857b5a2645647193e32a1256b3bef86b2397fa05392cc615df9ebd3b0"
+      "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Filters pagination links from media cards; search, details, sub/dub episode discovery, and best-effort stream resolution remain subject to live testing.",
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/anikoto-anime-0.1.3-draft.zip",
+      "sha256": "f916152aec804b78e82427d86c8eab109b2be388b5d4a1034b2232c204bc1ff9"
     },
     {
       "moduleId": "csx-bollyflix",
@@ -18,7 +18,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for Bollyflix: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-bollyflix-1.0.0.zip",
-      "sha256": "124ec3b1f3923fde6c9bd551e57f1a13e63df9b223c8dc60ec7c54790bb8b968"
+      "sha256": "0fdcb052225b40672f28ee4f09a3ffa8b79b617c15540cfe32adc499d6f9f8b5"
     },
     {
       "moduleId": "csx-cinestream",
@@ -26,7 +26,7 @@
       "contentType": "video",
       "description": "Lumina-native Stremio/Cinemeta metadata adapter. Uses Lumina Player's handler contract; provider-specific playback extraction is not included.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-cinestream-1.0.3.zip",
-      "sha256": "c889946a0e06d76f08c5e7987de261137184824d2337f45afc5c44db82f3f829"
+      "sha256": "b6b7ca10f63b594a202b914d50d41aed5fff122fee67acade44f2f1669cacaf5"
     },
     {
       "moduleId": "csx-moviesdrive",
@@ -34,7 +34,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for MoviesDrive: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesdrive-1.0.0.zip",
-      "sha256": "664391362388a744dba102b5e379820cdb40af5f60d7dea86dd4256d51f83bd4"
+      "sha256": "d6a5f808af57cf26afb99d3bf5688f34589615b98a9201fd7cf553875d4b8051"
     },
     {
       "moduleId": "csx-moviesmod",
@@ -42,7 +42,7 @@
       "contentType": "video",
       "description": "Lumina-native JavaScript port of the Moviesmod provider from CSX. Supports search, title details, source/episode discovery, and direct playable links when the host exposes them.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesmod-1.0.1.zip",
-      "sha256": "7eaae56d57f7032792df9bcf98364f4dfd6f4360b5ccbaef4e6641d3008a8043"
+      "sha256": "dbc2ece0fd5057c5b0820f33f22aea43269c8e47b40bfd43480724e78f9ff820"
     },
     {
       "moduleId": "csx-vegamovies",
@@ -50,7 +50,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for VegaMovies: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-vegamovies-1.0.0.zip",
-      "sha256": "72c5f206a62c89045b619a497d6bed967142f772c905af5cbda92afb35d11601"
+      "sha256": "8b146eb6a59445a83de6a77c9886192f1351cf314bd15cc3887cd26c0bb535ee"
     },
     {
       "moduleId": "lumina-demo",
@@ -58,7 +58,7 @@
       "contentType": "video",
       "description": "Diagnostic provider for testing Lumina Player's search, episode resolution, and native MP4 playback handler contract.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.2.zip",
-      "sha256": "28f3c96287f5216c6552925c5cf8aac26d8a224cba9c1929f65fc2db3d6bc1ac"
+      "sha256": "8e9db5b9f6e2fd0e95beadbebc60464272d5c9109009aaa1365877d8e9b288cf"
     }
   ]
 }
