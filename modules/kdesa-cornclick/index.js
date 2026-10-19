@@ -7,8 +7,12 @@
 // TMDB attribution: metadata/images are from The Movie Database (TMDB); not endorsed by TMDB.
 
 const TMDB_API = "https://api.themoviedb.org/3";
-const TMDB_BEARER = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYTg3NmZkYmVhMjNhMzI3ODY0ZjRjN2U5MzMwZTYxNiIsIm5iZiI6MTc4MjIwOTQ0NC45OTksInN1YiI6IjZhM2E1YmE0ZmMzZGFiNGNmYzMzNjIxMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WlSOswQDdxdbKu0jARJoruV6PlteoTXB1Oj4gRaibBI";
-const TMDB_KEY = "1865f43a0549ca50d341dd9ab8b29f49";
+function tmdbApiKey() {
+  const config = globalThis.LuminaModuleConfig;
+  const key = config && typeof config.tmdbApiKey === "string" ? config.tmdbApiKey.trim() : "";
+  if (!key) throw new Error("TMDB API key is not configured for this module.");
+  return key;
+}
 const TMDB_IMAGE = "https://image.tmdb.org/t/p/w500";
 const TMDB_BACKDROP = "https://image.tmdb.org/t/p/original";
 const CORNCLICK = "https://cornclick.com";
@@ -37,11 +41,7 @@ async function requestJson(url, options = {}) {
 }
 async function tmdb(path) {
   const sep = path.includes("?") ? "&" : "?";
-  try {
-    return await requestJson(TMDB_API + path + sep + "language=en-US", { headers: { Authorization: "Bearer " + TMDB_BEARER } });
-  } catch (_) {
-    return await requestJson(TMDB_API + path + sep + "api_key=" + TMDB_KEY + "&language=en-US");
-  }
+  return await requestJson(TMDB_API + path + sep + "api_key=" + encode(tmdbApiKey()) + "&language=en-US");
 }
 function mapResult(row, defaultType) {
   const type = row.media_type || defaultType;
