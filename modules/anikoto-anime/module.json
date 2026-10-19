@@ -1,0 +1,19 @@
+{
+  "id": "anikoto-anime",
+  "name": "AniKoto Anime (Compatibility Test)",
+  "moduleSystem": "lumina",
+  "contractVersion": 1,
+  "moduleVersion": "0.1.0-draft",
+  "contentType": "video",
+  "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Search, details, sub/dub episode discovery, and best-effort stream resolution; playback remains unverified.",
+  "config": {
+    "runtime": {
+      "entry": "index.js"
+    }
+  },
+  "attribution": {
+    "upstream": "https://github.com/KSHITIJ8473/raghav/tree/master/AniKotoAnime",
+    "license": "GPL-3.0-or-later",
+    "note": "Independent compatibility port; review upstream license obligations before distribution."
+  }
+}
