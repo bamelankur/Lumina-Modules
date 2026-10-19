@@ -61,14 +61,22 @@ function htmlCards(html) {
     const re = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
     let m;
     while ((m = re.exec(item))) anchors.push({tag:"<a " + m[1] + ">", inner:m[2]});
-    // Prefer the exact selector used by the upstream provider: a.name.d-title.
-    let link = anchors.find(x => /\bname\b/i.test(attr(x.tag,"class")) && /\bd-title\b/i.test(attr(x.tag,"class")));
-    if (!link) link = anchors.find(x => /\/watch\//i.test(attr(x.tag,"href")) && !/page|next|prev|pagination/i.test(attr(x.tag,"class")));
+    // Mirror the upstream provider's title-link priority, but require a real
+    // watch URL even when the preferred class selector matches navigation markup.
+    const titleLinks = anchors.filter(x => /\/watch\//i.test(attr(x.tag,"href")));
+    let link = titleLinks.find(x => /\bname\b/i.test(attr(x.tag,"class")) && /\bd-title\b/i.test(attr(x.tag,"class")));
+    if (!link) link = titleLinks.find(x => !!(attr(x.tag,"title") || attr(x.tag,"data-title") || strip(x.inner)));
     if (!link) continue;
     const href = absolute(attr(link.tag,"href"));
     const title = strip(attr(link.tag,"title") || attr(link.tag,"data-title") || link.inner);
-    // Never expose pagination labels as media cards.
-    if (!href || !title || /^page\s*\d+$/i.test(title) || /(?:^|\/)page(?:=|\/|$)/i.test(href) || seen.has(href)) continue;
+    // Pagination/navigation must never become a media card, even if it appears
+    // inside a container whose class also contains "item".
+    if (!href || !/\/watch\//i.test(href) || !title ||
+        /^page\s*\d+$/i.test(title) ||
+        /(?:^|[?&])page=\d+(?:&|$)/i.test(href) ||
+        /(?:^|\/)page(?:[-_/=]|$)/i.test(href) ||
+        /\b(?:next|previous|pagination)\b/i.test(attr(link.tag,"class")) ||
+        seen.has(href)) continue;
     const img = (item.match(/<img\b[^>]*>/i)||[])[0] || "";
     const image = attr(img,"data-src") || attr(img,"data-original") || attr(img,"data-lazy-src") || attr(img,"src");
     // Reject navigation links to the listing itself; only keep title/watch pages.
