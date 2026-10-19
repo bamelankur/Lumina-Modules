@@ -48,7 +48,6 @@ vm.runInNewContext(fs.readFileSync("modules/kdesa-cornclick/index.js", "utf8"), 
   assert.strictEqual(tvEpisodes[0].episode, 1);
   const tvStream = await api.stream(tvEpisodes[0].href, "English");
   assert.strictEqual(tvStream.streams[0].url, "https://cdn.example.test/ep.m3u8");
-  assert.throws(() => {}, undefined); // keeps the suite dependency-free
   console.log("PASS: Lumina contract, search, details, movie episode, TV episodes, and movie/TV stream mapping");
   console.log("Mocked requests:", requests.length);
 })().catch(error => { console.error(error); process.exit(1); });
