@@ -1,0 +1,49 @@
+name: KDesa Lumina adapter checks
+
+on:
+  pull_request:
+    paths:
+      - "modules/kdesa-cornclick/**"
+      - "tests/kdesa-cornclick.test.js"
+      - ".github/workflows/kdesa-cornclick-check.yml"
+  push:
+    branches: [port-kdesa-first-provider]
+    paths:
+      - "modules/kdesa-cornclick/**"
+      - "tests/kdesa-cornclick.test.js"
+      - ".github/workflows/kdesa-cornclick-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Syntax check
+        run: node --check modules/kdesa-cornclick/index.js
+      - name: Mocked contract test
+        run: node tests/kdesa-cornclick.test.js
+      - name: Manifest and package-shape check
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, re
+          root = pathlib.Path("modules/kdesa-cornclick")
+          manifest = json.loads((root / "module.json").read_text())
+          source = (root / "index.js").read_text()
+          assert manifest["id"] == root.name
+          assert manifest["moduleSystem"] == "lumina" and manifest["contractVersion"] == 1
+          assert manifest["config"]["runtime"]["entry"] == "index.js"
+          assert len(list(root.glob("*.json"))) == 1
+          assert len(source.encode()) < 2 * 1024 * 1024
+          assert "globalThis.LuminaModule" in source
+          for method in ("search", "details", "episodes", "stream"):
+              assert re.search(r"\b" + method + r"\s*\(", source), method
+          assert not re.search(r"(^|\n)\s*import\s+(?!\()", source)
+          assert not re.search(r"\brequire\s*\(", source)
+          print("PASS: manifest, one-JSON rule, entry size, and required contract")
+          PY
