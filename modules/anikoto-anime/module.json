@@ -3,9 +3,9 @@
   "name": "AniKoto Anime (Compatibility Test)",
   "moduleSystem": "lumina",
   "contractVersion": 1,
-  "moduleVersion": "0.1.2-draft",
+  "moduleVersion": "0.1.3-draft",
   "contentType": "video",
-  "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Search, details, sub/dub episode discovery, and best-effort stream resolution; playback remains unverified.",
+  "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Filters pagination links from media cards; search, details, sub/dub episode discovery, and best-effort stream resolution remain subject to live testing.",
   "config": {
     "runtime": {
       "entry": "index.js"
