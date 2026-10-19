@@ -55,24 +55,24 @@ function htmlCards(html) {
   // AniKoto cards use div.ani.items > div.item. Require an anime-name link
   // instead of accepting the first link in an arbitrary item/pagination block.
   const source = String(html || "");
-  const items = source.match(/<div\\b[^>]*class=["'][^"']*\\bitem\\b[^"']*["'][^>]*>[\\s\\S]*?(?=<div\\b[^>]*class=["'][^"']*\\bitem\\b|$)/gi) || [];
+  const items = source.match(/<div\b[^>]*class=["'][^"']*\bitem\b[^"']*["'][^>]*>[\s\S]*?(?=<div\b[^>]*class=["'][^"']*\bitem\b|$)/gi) || [];
   for (const item of items) {
     const anchors = [];
-    const re = /<a\\b([^>]*)>([\\s\\S]*?)<\\/a>/gi;
+    const re = /<a\b([^>]*)>([\s\S]*?)<\/a>/gi;
     let m;
     while ((m = re.exec(item))) anchors.push({tag:"<a " + m[1] + ">", inner:m[2]});
     // Prefer the exact selector used by the upstream provider: a.name.d-title.
-    let link = anchors.find(x => /\\bname\\b/i.test(attr(x.tag,"class")) && /\\bd-title\\b/i.test(attr(x.tag,"class")));
-    if (!link) link = anchors.find(x => /\\/watch\\//i.test(attr(x.tag,"href")) && !/page|next|prev|pagination/i.test(attr(x.tag,"class")));
+    let link = anchors.find(x => /\bname\b/i.test(attr(x.tag,"class")) && /\bd-title\b/i.test(attr(x.tag,"class")));
+    if (!link) link = anchors.find(x => /\/watch\//i.test(attr(x.tag,"href")) && !/page|next|prev|pagination/i.test(attr(x.tag,"class")));
     if (!link) continue;
     const href = absolute(attr(link.tag,"href"));
     const title = strip(attr(link.tag,"title") || attr(link.tag,"data-title") || link.inner);
     // Never expose pagination labels as media cards.
-    if (!href || !title || /^page\\s*\\d+$/i.test(title) || /(?:^|\\/)page(?:=|\\/|$)/i.test(href) || seen.has(href)) continue;
-    const img = (item.match(/<img\\b[^>]*>/i)||[])[0] || "";
+    if (!href || !title || /^page\s*\d+$/i.test(title) || /(?:^|\/)page(?:=|\/|$)/i.test(href) || seen.has(href)) continue;
+    const img = (item.match(/<img\b[^>]*>/i)||[])[0] || "";
     const image = attr(img,"data-src") || attr(img,"data-original") || attr(img,"data-lazy-src") || attr(img,"src");
     // Reject navigation links to the listing itself; only keep title/watch pages.
-    if (href.replace(/\\/$/,"") === BASE.replace(/\\/$/,"")) continue;
+    if (href.replace(/\/$/,"") === BASE.replace(/\/$/,"")) continue;
     seen.add(href);
     out.push({title, href, url:href, image:absolute(image), poster:absolute(image), contentType:"video"});
   }
@@ -153,22 +153,22 @@ async function homeResults(page) {
 }
 async function extractDetails(href) {
   const url = absolute(href);
-  if (!url || !/^https?:\\/\\//i.test(url)) throw new Error("AniKoto title URL is invalid.");
+  if (!url || !/^https?:\/\//i.test(url)) throw new Error("AniKoto title URL is invalid.");
   const html = await get(url);
   // Match the upstream provider's title selectors, in priority order.
   let title = firstMatch(html, [
-    /<div\\b[^>]*id=["']w-info["'][^>]*>[\\s\\S]*?<h1\\b[^>]*class=["'][^"']*\\btitle\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/h1>/i,
-    /<h1\\b[^>]*itemprop=["']name["'][^>]*>([\\s\\S]*?)<\\/h1>/i,
-    /<[^>]+class=["'][^"']*\\btitle\\b[^"']*["'][^>]*itemprop=["']name["'][^>]*>([\\s\\S]*?)<\\/[^>]+>/i,
-    /<h1\\b[^>]*class=["'][^"']*\\btitle\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/h1>/i
+    /<div\b[^>]*id=["']w-info["'][^>]*>[\s\S]*?<h1\b[^>]*class=["'][^"']*\btitle\b[^"']*["'][^>]*>([\s\S]*?)<\/h1>/i,
+    /<h1\b[^>]*itemprop=["']name["'][^>]*>([\s\S]*?)<\/h1>/i,
+    /<[^>]+class=["'][^"']*\btitle\b[^"']*["'][^>]*itemprop=["']name["'][^>]*>([\s\S]*?)<\/[^>]+>/i,
+    /<h1\b[^>]*class=["'][^"']*\btitle\b[^"']*["'][^>]*>([\s\S]*?)<\/h1>/i
   ]);
-  if (!title || /^page\\s*\\d+$/i.test(title)) {
+  if (!title || /^page\s*\d+$/i.test(title)) {
     // Some templates put the title attribute on the anime heading.
-    const heading = html.match(/<h1\\b[^>]*>([\\s\\S]*?)<\\/h1>/i);
+    const heading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
     const candidate = heading ? strip(heading[1]) : "";
-    if (candidate && !/^page\\s*\\d+$/i.test(candidate)) title = candidate;
+    if (candidate && !/^page\s*\d+$/i.test(candidate)) title = candidate;
   }
-  if (!title || /^page\\s*\\d+$/i.test(title)) {
+  if (!title || /^page\s*\d+$/i.test(title)) {
     throw new Error("AniKoto title page did not contain a readable anime title. The selected link may be a pagination page.");
   }
   const imgTag = (html.match(/<(?:img|meta)\b[^>]*(?:itemprop=["']image["']|property=["']og:image["']|class=["'][^"']*poster[^"']*)[^>]*>/i)||[])[0] || "";
