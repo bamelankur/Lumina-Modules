@@ -1,0 +1,15 @@
+name: Lumina compatibility CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tools/lumina-repository-compat/tests -v
+      - run: PYTHONPATH=tools/lumina-repository-compat python -m lumina_compat validate tools/lumina-repository-compat/examples/demo-source
