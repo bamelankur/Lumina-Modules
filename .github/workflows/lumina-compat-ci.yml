@@ -1,0 +1,23 @@
+name: Lumina compatibility framework CI
+on:
+  push:
+    paths:
+      - "tools/lumina-repository-compat/**"
+      - ".github/workflows/lumina-compat-ci.yml"
+  pull_request:
+    paths:
+      - "tools/lumina-repository-compat/**"
+      - ".github/workflows/lumina-compat-ci.yml"
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run unit tests
+        run: PYTHONPATH=tools/lumina-repository-compat python -m unittest discover -s tools/lumina-repository-compat/tests -v
+      - name: Validate demo module
+        run: PYTHONPATH=tools/lumina-repository-compat python -m lumina_compat validate tools/lumina-repository-compat/examples/demo-source
