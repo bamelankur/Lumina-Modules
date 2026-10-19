@@ -5,6 +5,7 @@ const assert = require("assert");
 const requests = [];
 const context = {
   URL, Map, Number, String, Array, Object, Math, encodeURIComponent, decodeURIComponent,
+  LuminaModuleConfig: { tmdbApiKey: "test-only-key" },
   fetch: async (url, options) => {
     requests.push({ url, options });
     let data;
