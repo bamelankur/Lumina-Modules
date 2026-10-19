@@ -1,3 +1,5 @@
+// Isolate this module's declarations so it can be evaluated after other modules in a shared JS context.
+(function () {
 // AniKoto Anime — Lumina Module API v1 compatibility draft.
 // Upstream reference: https://github.com/KSHITIJ8473/raghav/tree/master/AniKotoAnime
 // Upstream is GPL-3.0-or-later. This adapter is a draft; playback is best-effort and unverified.
@@ -270,3 +272,5 @@ globalThis.extractHome = (page) => api.home(page);
 globalThis.extractDetails = (href) => api.details(href);
 globalThis.extractEpisodes = (href) => api.episodes(href);
 globalThis.extractStreamUrl = (href,audio,preferDub) => api.stream(href,audio,preferDub ? "dub" : audio);
+
+})();
