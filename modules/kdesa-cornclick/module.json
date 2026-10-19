@@ -6,5 +6,5 @@
   "moduleVersion": "0.1.0",
   "contentType": "video",
   "description": "First Lumina port from KSHITIJ8473/raghav: TMDB-backed search, title details and TV episodes, with CornClick source discovery. Preview release; playback requires live endpoint verification.",
-  "config": { "runtime": { "entry": "index.js" } }
+  "config": { "runtime": { "entry": "index.js" }, "settings": { "tmdbApiKey": "" } }
 }
