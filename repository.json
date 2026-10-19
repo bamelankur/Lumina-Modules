@@ -6,11 +6,11 @@
   "modules": [
     {
       "moduleId": "anikoto-anime",
-      "version": "0.1.0-draft",
+      "version": "0.1.1-draft",
       "contentType": "video",
       "description": "Draft Lumina JavaScript port of the AniKoto Anime CloudStream provider. Search, details, sub/dub episode discovery, and best-effort stream resolution; playback remains unverified.",
-      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/anikoto-anime-0.1.0-draft.zip",
-      "sha256": "e291aaa486ef6363a929fdb7144feac7b7ba29fdc302ad94877e9ccbc6ea37eb"
+      "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/anikoto-anime-0.1.1-draft.zip",
+      "sha256": "35cdd8a800c1789755a3df4799b287d4122223180540eb30405375e67cbcf8c2"
     },
     {
       "moduleId": "csx-bollyflix",
@@ -18,7 +18,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for Bollyflix: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-bollyflix-1.0.0.zip",
-      "sha256": "14e8525313478f5ad35f9f6e00ba3d5fc5ed703e02edce7a1a5cf05981dee921"
+      "sha256": "e53f603ac26f12d44e10cf84f7b6f3fa8cd53848eef6862630befe42e965a9d5"
     },
     {
       "moduleId": "csx-cinestream",
@@ -26,7 +26,7 @@
       "contentType": "video",
       "description": "Lumina-native Stremio/Cinemeta metadata adapter. Uses Lumina Player's handler contract; provider-specific playback extraction is not included.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-cinestream-1.0.3.zip",
-      "sha256": "58a4e8ba92a1543f4b0c0accc71ee9fcadf4c54d330dc2dbd3290414e46ee9cb"
+      "sha256": "5830fd5beade4a6b100b231f9547e04c9152220f996a4fe91c274a863fb9c4be"
     },
     {
       "moduleId": "csx-moviesdrive",
@@ -34,7 +34,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for MoviesDrive: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesdrive-1.0.0.zip",
-      "sha256": "fe78c480bdffad375fe6a85337793e773c085b8f861436ecaaea86f3506e0119"
+      "sha256": "015a41f0ec794edc75bed7f2fb5b55fff859a26ef0bdb4a3401213d1a471ddb7"
     },
     {
       "moduleId": "csx-moviesmod",
@@ -42,7 +42,7 @@
       "contentType": "video",
       "description": "Lumina-native JavaScript port of the Moviesmod provider from CSX. Supports search, title details, source/episode discovery, and direct playable links when the host exposes them.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-moviesmod-1.0.1.zip",
-      "sha256": "f374fdfba73246e7fe69d481451faa17114fe2c24500bc4361efe3a66f74abb0"
+      "sha256": "aa30266e4d57e71d84a7ea19e83f0581b0ea55f2aff45503ff15d761e1cf466d"
     },
     {
       "moduleId": "csx-vegamovies",
@@ -50,7 +50,7 @@
       "contentType": "video",
       "description": "Lumina-native provider adapter for VegaMovies: search, catalogue, title details, and source discovery. Direct playback depends on the site's current link format.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/csx-vegamovies-1.0.0.zip",
-      "sha256": "1438d9d4141b8ed8f40391384080c1fff7689aae64f35e50898eacf07b975d18"
+      "sha256": "1f7a0e5bb2e9163864199cc0bae5001d65c811846a1b502d0de6a8f58f9b7be3"
     },
     {
       "moduleId": "lumina-demo",
@@ -58,7 +58,7 @@
       "contentType": "video",
       "description": "Diagnostic provider for testing Lumina Player's search, episode resolution, and native MP4 playback handler contract.",
       "packageUrl": "https://raw.githubusercontent.com/bamelankur/Lumina-Modules/main/packages/lumina-demo-1.0.2.zip",
-      "sha256": "ed566d536a5873fd57d520c324050dca20ed62f7d55440103775ada7a145cb3b"
+      "sha256": "00454f900c9a15e32cdc25afe9922b0e5f654f8fbe129f79734b6be9dff6f98f"
     }
   ]
 }
